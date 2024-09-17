@@ -1,0 +1,4 @@
+tests:
+  stage: test
+  script:
+    - env
