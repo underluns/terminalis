@@ -16,7 +16,15 @@ The description of this project will be written here
 
 ## Installation
 
-The installation process of this project will be described here
+Download the project repository to any folder of your choice, for example to `~/.bash/`, using this command:
+```sh
+git clone https://gitlab.com/underluns/terminalis.git ~/.bash/terminalis
+```
+
+And then add the following lines to your shell configuration file `~/.bashrc`:
+```sh
+source ~/.bash/terminalis/*.sh
+```
 
 ## Usage
 
