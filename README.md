@@ -4,7 +4,9 @@
 
 # terminalis
 
-The description of this project will be written here
+This is a shell script [./terminalis.sh](./terminalis.sh)
+
+It extends the system console and adds several useful features for developers
 
 ## Contents
 
@@ -16,7 +18,7 @@ The description of this project will be written here
 
 ## Installation
 
-Download the project repository to any folder of your choice, for example to `~/.bash/`, using this command:
+Download this project repository to any folder of your choice, for example to `~/.bash/`, by executing commands:
 ```sh
 git clone https://gitlab.com/underluns/terminalis.git ~/.bash/terminalis
 ```
@@ -25,6 +27,7 @@ And then add the following lines to your shell configuration file `~/.bashrc`:
 ```sh
 source ~/.bash/terminalis/*.sh
 ```
+Now you have all the features of the terminalis
 
 ## Usage
 
