@@ -6,15 +6,29 @@
 
 This is a shell script [./terminalis.sh](./terminalis.sh)
 
-It extends the system console and adds several useful features for developers
+It extends the system console and adds several useful [features](#features) for developers
 
 ## Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Testing](#testing)
-- [Changelog](#changelog)
-- [License](#license)
+* [Requirements](#requirements)
+* [Installation](#installation)
+* [Features](#features)
+* [Usage](#usage)
+* [Testing](#testing)
+* [Changelog](#changelog)
+* [License](#license)
+
+## Requirements
+
+This project depends on and/or uses third-party software:
+* unix-like operating system:
+    * [ubuntu](https://ubuntu.com) *>= 22.04 (2022-04)*
+* shell command-line interpreter:
+    * [bash](https://www.gnu.org/software/bash) *>= 5.1 (2020-12)*
+* version-control software:
+    * [git](https://git-scm.com) *>= 2.34 (2021-11)*
+
+Correct installation and usage is guaranteed only if the specified dependencies and versions are met
 
 ## Installation
 
@@ -28,6 +42,10 @@ And then add the following lines to your shell configuration file `~/.bashrc`:
 source ~/.bash/terminalis/*.sh
 ```
 Now you have all the features of the terminalis
+
+## Features
+
+The features for this project will be described in this section
 
 ## Usage
 
