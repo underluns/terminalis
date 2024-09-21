@@ -4,7 +4,7 @@
 
 # terminalis
 
-This is a shell script [./terminalis.sh](./terminalis.sh)
+This is a shell script [terminalis.sh](./lib/terminalis.sh)
 
 It extends the system console and adds several useful [features](#features) for developers
 
@@ -39,7 +39,7 @@ git clone https://gitlab.com/underluns/terminalis.git ~/.bash/terminalis
 
 And then add the following lines to your shell configuration file `~/.bashrc`:
 ```sh
-source ~/.bash/terminalis/*.sh
+source ~/.bash/terminalis/install.sh
 ```
 Now you have all the features of the terminalis
 
