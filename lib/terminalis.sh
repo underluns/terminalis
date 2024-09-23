@@ -5,13 +5,19 @@ terminalis() {
   local command=${1:-help}
 
   case $command in
-    "init" | "load")
-      source $(dirname $current)/init.sh
+    "init")
+      shift
+      source $(dirname $current)/init.sh $@
       ;;
-    "reload" | "reinit")
-      source $current init
+    "reload")
+      shift
+      source $current init $@
       ;;
-    "help" | "--help" | "-h")
+    "help")
+      shift
+      $(dirname $current)/scripts/help.sh $@
+      ;;  
+    "--help" | "-h")
       $(dirname $current)/scripts/help.sh
       ;;
     *)
