@@ -1,27 +1,27 @@
 #!/usr/bin/env sh
 
 terminalis() {
-  local current=${BASH_SOURCE[0]}
-  local command=${1:-help}
+  local lib=$(dirname ${BASH_SOURCE[0]})
+  local command=${1:---help}
 
   case $command in
     "init")
       shift
-      source $(dirname $current)/init.sh $@
+      source $lib/commands/init.sh $@
       ;;
     "reload")
       shift
-      source $current init $@
+      source $lib/commands/reload.sh $@
       ;;
     "help")
       shift
-      $(dirname $current)/scripts/help.sh $@
+      $lib/commands/help.sh $@
       ;;  
     "--help" | "-h")
-      $(dirname $current)/scripts/help.sh
+      $lib/commands/help.sh
       ;;
     *)
-      $(dirname $current)/scripts/error.sh unknown $command
+      $lib/scripts/error.sh unknown $command
       return 1
       ;;
   esac
