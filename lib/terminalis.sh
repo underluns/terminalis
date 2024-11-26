@@ -21,7 +21,7 @@ terminalis() {
       $lib/commands/help.sh
       ;;
     *)
-      $lib/scripts/error.sh unknown $command
+      $lib/errors/error.sh unknown $command
       return 1
       ;;
   esac

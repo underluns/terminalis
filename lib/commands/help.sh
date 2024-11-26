@@ -6,7 +6,7 @@ __terminalis_help() {
 
   case $command in
     "")
-      cat $lib/help/commands.txt
+      cat $lib/help/terminalis.txt
       cat $lib/help/init.txt
       cat $lib/help/reload.txt
       cat $lib/help/help.txt
@@ -21,7 +21,7 @@ __terminalis_help() {
       cat $lib/help/help.txt
       ;;
     *)
-      $lib/scripts/error.sh unknown $command
+      $lib/errors/error.sh unknown $command
       return 1
       ;;
   esac

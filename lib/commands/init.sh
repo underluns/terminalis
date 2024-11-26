@@ -6,13 +6,13 @@ __terminalis_init() {
 
   case $command in
     "")
-      echo "terminalis init"
+      $lib/scripts/git_line.sh
       ;;
     "--help" | "-h")
       $lib/commands/help.sh init
       ;;
     *)
-      $lib/scripts/error.sh unknown $command
+      $lib/errors/error.sh unknown $command
       return 1
       ;;
   esac
