@@ -22,13 +22,13 @@ It extends the system console and adds several useful [features](#features) for 
 
 This project depends on and/or uses third-party software:
 * unix-like operating system:
-    * [ubuntu](https://ubuntu.com) *>= 22.04 (2022-04)*
+    * [ubuntu](https://ubuntu.com)
 * shell command-line interpreter:
-    * [bash](https://www.gnu.org/software/bash) *>= 5.1 (2020-12)*
+    * [bash](https://www.gnu.org/software/bash)
 * version-control software:
-    * [git](https://git-scm.com) *>= 2.34 (2021-11)*
+    * [git](https://git-scm.com)
 
-Correct installation and usage is guaranteed only if the specified dependencies and versions are met
+Correct installation and usage is guaranteed only if the specified dependencies are met
 
 ## Installation
 
