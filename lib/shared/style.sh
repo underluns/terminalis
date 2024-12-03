@@ -7,7 +7,7 @@ __terminalis_style() {
   local -r option=${3}
 
   case $option in
-    "")
+    "--bash" | "")
       local result="\033[${styles}m${text}\033[0m"
       ;;
     "--prompts" | "-ps")
