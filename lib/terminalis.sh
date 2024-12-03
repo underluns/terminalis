@@ -16,7 +16,7 @@ terminalis() {
     "help")
       shift
       $lib/commands/help.sh $@
-      ;;  
+      ;;
     "--help" | "-h")
       $lib/commands/help.sh
       ;;
