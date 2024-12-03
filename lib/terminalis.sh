@@ -21,7 +21,7 @@ terminalis() {
       $root/lib/commands/help.sh
       ;;
     *)
-      $root/lib/errors/error.sh unknown $command
+      $root/lib/shared/error.sh unknown $command
       return 1
       ;;
   esac

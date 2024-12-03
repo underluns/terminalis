@@ -12,7 +12,7 @@ __terminalis_reload() {
       $root/lib/commands/help.sh reload
       ;;
     *)
-      $root/lib/errors/error.sh unknown $command
+      $root/lib/shared/error.sh unknown $command
       return 1
       ;;
   esac

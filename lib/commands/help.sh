@@ -6,22 +6,22 @@ __terminalis_help() {
 
   case $command in
     "")
-      cat $root/lib/help/terminalis.txt
-      cat $root/lib/help/init.txt
-      cat $root/lib/help/reload.txt
-      cat $root/lib/help/help.txt
+      cat $root/help/terminalis.txt
+      cat $root/help/commands/init.txt
+      cat $root/help/commands/reload.txt
+      cat $root/help/commands/help.txt
       ;;
     "init")
-      cat $root/lib/help/init.txt
+      cat $root/help/commands/init.txt
       ;;
     "reload")
-      cat $root/lib/help/reload.txt
-      ;;  
+      cat $root/help/commands/reload.txt
+      ;;
     "--help" | "-h")
-      cat $root/lib/help/help.txt
+      cat $root/help/commands/help.txt
       ;;
     *)
-      $root/lib/errors/error.sh unknown $command
+      $root/lib/shared/error.sh unknown $command
       return 1
       ;;
   esac
