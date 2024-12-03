@@ -61,4 +61,4 @@ This project's changelog is available in [./CHANGELOG.md](./CHANGELOG.md)
 
 ## License
 
-This project is licensed under [./LICENSE](./LICENSE)
+This project is licensed under [./LICENSE.txt](./LICENSE.txt)
