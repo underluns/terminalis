@@ -27,5 +27,4 @@ __terminalis_help() {
   esac
 }
 
-__terminalis_help $@
-unset __terminalis_help
+__terminalis_help "$@"

@@ -23,4 +23,3 @@ __terminalis_style() {
 }
 
 __terminalis_style "$@"
-unset __terminalis_style

@@ -27,4 +27,4 @@ terminalis() {
   esac
 }
 
-terminalis $@
+terminalis "$@"

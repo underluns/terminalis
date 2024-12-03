@@ -18,5 +18,4 @@ __terminalis_init() {
   esac
 }
 
-__terminalis_init $@
-unset __terminalis_init
+__terminalis_init "$@"

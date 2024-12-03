@@ -18,5 +18,4 @@ __terminalis_reload() {
   esac
 }
 
-__terminalis_reload $@
-unset __terminalis_reload
+__terminalis_reload "$@"

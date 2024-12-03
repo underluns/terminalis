@@ -15,5 +15,4 @@ __terminalis_error() {
   esac
 }
 
-__terminalis_error $@
-unset __terminalis_error
+__terminalis_error "$@"

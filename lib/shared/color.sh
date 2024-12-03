@@ -44,5 +44,4 @@ __terminalis_color() {
   echo $result
 }
 
-__terminalis_color $@
-unset __terminalis_color
+__terminalis_color "$@"
