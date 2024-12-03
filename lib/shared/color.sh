@@ -38,7 +38,7 @@ __terminalis_color() {
   local result=${colors[reset]}
 
   for option in $@; do
-    result="${result};${colors[$option]}"
+    result+=";${colors[$option]}"
   done
 
   echo $result
