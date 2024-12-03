@@ -16,7 +16,6 @@ __terminalis_init() {
       ;;
     *)
       $root/lib/shared/error.sh unknown $command
-      return 1
       ;;
   esac
 }

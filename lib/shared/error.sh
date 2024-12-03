@@ -10,9 +10,10 @@ __terminalis_error() {
       ;;
     *)
       echo "Unknown error: $error"
-      return 1
       ;;
   esac
+
+  return 1
 }
 
 __terminalis_error "$@"

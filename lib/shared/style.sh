@@ -15,7 +15,6 @@ __terminalis_style() {
       ;;
     *)
       $root/lib/shared/error.sh unknown $option
-      return 1
       ;;
   esac
 

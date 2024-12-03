@@ -15,7 +15,6 @@ terminalis() {
       ;;
     *)
       $root/lib/shared/error.sh unknown $command
-      return 1
       ;;
   esac
 }
