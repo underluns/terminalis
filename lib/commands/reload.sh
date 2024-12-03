@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
 __terminalis_reload() {
-  local root=$(realpath $(dirname ${BASH_SOURCE[0]})/../../)
-  local command=${1}
+  local -r root=$(realpath $(dirname ${BASH_SOURCE[0]})/../../)
+  local -r command=${1}
 
   case $command in
     "")

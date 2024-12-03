@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
 terminalis() {
-  local root=$(realpath $(dirname ${BASH_SOURCE[0]})/../)
-  local command=${1:---help}
+  local -r root=$(realpath $(dirname ${BASH_SOURCE[0]})/../)
+  local -r command=${1:---help}
 
   case $command in
     "init")

@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 __terminalis_error() {
-  local error=${1}
+  local -r error=${1}
 
   case $error in
     "unknown")
