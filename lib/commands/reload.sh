@@ -1,18 +1,18 @@
 #!/usr/bin/env sh
 
 __terminalis_reload() {
-  local lib=$(realpath $(dirname ${BASH_SOURCE[0]})/../)
+  local root=$(realpath $(dirname ${BASH_SOURCE[0]})/../../)
   local command=${1}
 
   case $command in
     "")
-      source $lib/../install.sh
+      source $root/install.sh
       ;;
     "--help" | "-h")
-      $lib/commands/help.sh reload
+      $root/lib/commands/help.sh reload
       ;;
     *)
-      $lib/errors/error.sh unknown $command
+      $root/lib/errors/error.sh unknown $command
       return 1
       ;;
   esac
