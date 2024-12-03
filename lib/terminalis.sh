@@ -9,16 +9,9 @@ terminalis() {
       shift
       source $root/lib/commands/init.sh $@
       ;;
-    "reload")
-      shift
-      source $root/lib/commands/reload.sh $@
-      ;;
-    "help")
-      shift
-      $root/lib/commands/help.sh $@
-      ;;
     "--help" | "-h")
-      $root/lib/commands/help.sh
+      cat $root/help/terminalis.txt
+      $root/lib/commands/init.sh --help
       ;;
     *)
       $root/lib/shared/error.sh unknown $command

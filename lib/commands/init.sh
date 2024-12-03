@@ -8,8 +8,11 @@ __terminalis_init() {
     "")
       source $root/lib/scripts/git_line.sh
       ;;
+    "--reload" | "-r")
+      source $root/install.sh
+      ;;  
     "--help" | "-h")
-      $root/lib/commands/help.sh init
+      cat $root/help/commands/init.txt
       ;;
     *)
       $root/lib/shared/error.sh unknown $command
