@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 __terminalis_style() {
-  local -r root=$(realpath $(dirname ${BASH_SOURCE[0]})/../../)  
+  local -r root=${TERMINALIS_ROOT}
   local -r text=${1}
   local -r styles=${2}
   local -r option=${3}

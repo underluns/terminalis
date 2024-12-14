@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 __terminalis_git_line() {
-  local -r root=$(realpath $(dirname ${BASH_SOURCE[0]})/../../)
+  local -r root=${TERMINALIS_ROOT}
 
   declare -g -A TERMINALIS_COLORS=(
     [cwd]=${TERMINALIS_COLOR_CWD:-"$($root/lib/shared/color.sh bold blue)"}
@@ -56,7 +56,7 @@ __terminalis_git_line() {
       local status="failure"
     fi
 
-    local -r root=$(realpath $(dirname ${BASH_SOURCE[0]})/../../)
+    local -r root=${TERMINALIS_ROOT}
     local -r cwd="$($root/lib/shared/style.sh "\w" "${TERMINALIS_COLORS[cwd]}" -ps)"
     local -r git="$($root/lib/shared/style.sh "$(__terminalis_git_info)" "${TERMINALIS_COLORS[git]}" -ps)"
     local -r prompt="$($root/lib/shared/style.sh " ${TERMINALIS_SYMBOLS[prompt]} " "${TERMINALIS_COLORS[$status]}" -ps)"
