@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
 __terminalis_style() {
-  local -r root=${TERMINALIS_ROOT}
-  local -r text=${1}
-  local -r styles=${2}
-  local -r option=${3}
+  local root=${TERMINALIS_ROOT}
+  local text=${1}
+  local styles=${2}
+  local option=${3}
 
   case $option in
     "--bash" | "")

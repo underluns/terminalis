@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 __terminalis_color() {
-  local -A -r colors=(
+  local -A colors=(
     [reset]="0"
 
     # styles

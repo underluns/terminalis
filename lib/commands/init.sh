@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
 __terminalis_init() {
-  local -r root=${TERMINALIS_ROOT}
-  local -r command=${1}
+  local root=${TERMINALIS_ROOT}
+  local command=${1}
 
   case $command in
     "")
