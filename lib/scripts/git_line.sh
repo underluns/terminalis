@@ -3,19 +3,15 @@
 __terminalis_git_line() {
   local root=${TERMINALIS_ROOT}
 
-  declare -g -A TERMINALIS_COLORS=(
-    [cwd]=${TERMINALIS_COLOR_CWD:-"$($root/lib/shared/color.sh bold blue)"}
-    [git]=${TERMINALIS_COLOR_GIT:-"$($root/lib/shared/color.sh bold yellow)"}
-    [success]=${TERMINALIS_COLOR_SUCCESS:-"$($root/lib/shared/color.sh white)"}
-    [failure]=${TERMINALIS_COLOR_FAILURE:-"$($root/lib/shared/color.sh red)"}
-  )
+  declare -g TERMINALIS_COLOR_CWD=${TERMINALIS_COLOR_CWD:-"$($root/lib/shared/color.sh bold blue)"}
+  declare -g TERMINALIS_COLOR_GIT=${TERMINALIS_COLOR_GIT:-"$($root/lib/shared/color.sh bold yellow)"}
+  declare -g TERMINALIS_COLOR_SUCCESS=${TERMINALIS_COLOR_SUCCESS:-"$($root/lib/shared/color.sh white)"}
+  declare -g TERMINALIS_COLOR_FAILURE=${TERMINALIS_COLOR_FAILURE:-"$($root/lib/shared/color.sh red)"}
 
-  declare -g -A TERMINALIS_SYMBOLS=(
-    [prompt]=${TERMINALIS_SYMBOL_PROMPT:-"\$"}
-    [git_push]=${TERMINALIS_SYMBOL_GIT_PUSH:-"↑"}
-    [git_pull]=${TERMINALIS_SYMBOL_GIT_PULL:-"↓"}
-    [git_modified]=${TERMINALIS_SYMBOL_GIT_MODIFIED:-"*"}
-  )
+  declare -g TERMINALIS_SYMBOL_PROMPT=${TERMINALIS_SYMBOL_PROMPT:-"\$"}
+  declare -g TERMINALIS_SYMBOL_GIT_PUSH=${TERMINALIS_SYMBOL_GIT_PUSH:-"↑"}
+  declare -g TERMINALIS_SYMBOL_GIT_PULL=${TERMINALIS_SYMBOL_GIT_PULL:-"↓"}
+  declare -g TERMINALIS_SYMBOL_GIT_MODIFIED=${TERMINALIS_SYMBOL_GIT_MODIFIED:-"*"}
 
   __terminalis_git_branch() {
     $(git rev-parse --is-inside-work-tree 2>/dev/null) || return
@@ -35,15 +31,15 @@ __terminalis_git_line() {
 
     local marks
     if [[ -n "$(git status --porcelain)" ]]; then
-      marks="${TERMINALIS_SYMBOLS[git_modified]}${marks}"
+      marks="${TERMINALIS_SYMBOL_GIT_MODIFIED}${marks}"
     fi
 
     if [[ $ahead -ne 0 ]]; then
-      marks="${marks} ${TERMINALIS_SYMBOLS[git_push]}${ahead}"
+      marks="${marks} ${TERMINALIS_SYMBOL_GIT_PUSH}${ahead}"
     fi
 
     if [[ $behind -ne 0 ]]; then
-      marks="${marks} ${TERMINALIS_SYMBOLS[git_pull]}${behind}"
+      marks="${marks} ${TERMINALIS_SYMBOL_GIT_PULL}${behind}"
     fi
 
     echo " $branch$marks"
@@ -51,15 +47,15 @@ __terminalis_git_line() {
 
   __terminalis_git_prompt() {
     if [[ $? -eq 0 ]]; then
-      local status="success"
+      local status_color=${TERMINALIS_COLOR_SUCCESS}
     else
-      local status="failure"
+      local status_color=${TERMINALIS_COLOR_FAILURE}
     fi
 
     local root=${TERMINALIS_ROOT}
-    local cwd="$($root/lib/shared/style.sh "\w" "${TERMINALIS_COLORS[cwd]}" -ps)"
-    local git="$($root/lib/shared/style.sh "$(__terminalis_git_info)" "${TERMINALIS_COLORS[git]}" -ps)"
-    local prompt="$($root/lib/shared/style.sh " ${TERMINALIS_SYMBOLS[prompt]} " "${TERMINALIS_COLORS[$status]}" -ps)"
+    local cwd="$($root/lib/shared/style.sh "\w" "${TERMINALIS_COLOR_CWD}" -ps)"
+    local git="$($root/lib/shared/style.sh "$(__terminalis_git_info)" "${TERMINALIS_COLOR_GIT}" -ps)"
+    local prompt="$($root/lib/shared/style.sh " ${TERMINALIS_SYMBOL_PROMPT} " "${status_color}" -ps)"
 
     PS1="${cwd}${git}${prompt}"
   }
