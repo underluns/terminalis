@@ -1,22 +1,23 @@
 #!/usr/bin/env sh
 
-terminalis() {
-  local root=${TERMINALIS_ROOT}
-  local command=${1:---help}
-
-  case $command in
-    "init")
-      shift
-      source $root/lib/commands/init.sh $@
-      ;;
-    "--help" | "-h")
-      cat $root/help/terminalis.txt
-      $root/lib/commands/init.sh --help
-      ;;
-    *)
-      $root/lib/shared/error.sh unknown $command
-      ;;
-  esac
+__terminalis_root() {
+  echo "${TERMINALIS_ROOT:?}"
 }
 
-terminalis "$@"
+. "$(__terminalis_root)/lib/shared/common.sh"
+. "$(__terminalis_root)/lib/commands/help.sh"
+. "$(__terminalis_root)/lib/commands/init.sh"
+
+terminalis() {
+  case "$1" in
+    "init")
+      shift && terminalis_init "$@";;
+    "help")
+      shift && terminalis_help "$@";;
+    "--help" | "-h" | "")
+      terminalis_help;;
+    *)
+      echo "$0:$LINENO: command not found: $1" 1>&2
+      return 1;;
+  esac
+}

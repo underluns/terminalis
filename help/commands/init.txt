@@ -1,1 +1,1 @@
-this is help for init
+this is help for terminalis_init

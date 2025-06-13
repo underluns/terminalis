@@ -1,23 +1,13 @@
 #!/usr/bin/env sh
 
-__terminalis_init() {
-  local root=${TERMINALIS_ROOT}
-  local command=${1}
-
-  case $command in
+terminalis_init() {
+  case "$1" in
     "")
-      source $root/lib/scripts/git_line.sh
-      ;;
-    "--reload" | "-r")
-      source $root/install.sh
-      ;;  
+      . "$(__terminalis_root)/lib/scripts/prompt.sh";;
     "--help" | "-h")
-      cat $root/help/commands/init.txt
-      ;;
+      terminalis_help init;;
     *)
-      $root/lib/shared/error.sh unknown $command
-      ;;
+      echo "$0:$LINENO: command not found: $1" 1>&2
+      return 1;;
   esac
 }
-
-__terminalis_init "$@"

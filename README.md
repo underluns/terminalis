@@ -1,4 +1,4 @@
-[![CI](https://github.com/underluns/terminalis/actions/workflows/ci.yml/badge.svg)](https://github.com/underluns/terminalis/actions)
+[![workflow](https://github.com/underluns/terminalis/actions/workflows/ci.yml/badge.svg)](https://github.com/underluns/terminalis/actions)
 [![pipeline](https://gitlab.com/underluns/terminalis/badges/master/pipeline.svg)](https://gitlab.com/underluns/terminalis/-/pipelines)
 [![coverage](https://gitlab.com/underluns/terminalis/badges/master/coverage.svg)](https://gitlab.com/underluns/terminalis/-/commits)
 
@@ -22,9 +22,9 @@ It extends the system console and adds several useful [features](#features) for 
 
 This project depends on and/or uses third-party software:
 * unix-like operating system:
-    * [ubuntu](https://ubuntu.com)
+    * [ubuntu](https://ubuntu.com) or [macos](https://www.apple.com/macos)
 * shell command-line interpreter:
-    * [bash](https://www.gnu.org/software/bash)
+    * [bash](https://www.gnu.org/software/bash) or [zsh](https://www.zsh.org)
 * version-control software:
     * [git](https://git-scm.com)
 
@@ -32,14 +32,14 @@ Correct installation and usage is guaranteed only if the specified dependencies 
 
 ## Installation
 
-Download this project repository to any folder of your choice, for example to `~/.bash/`, by executing commands:
+Download this project repository to any folder of your choice, for example to `~/.sh/`, by executing commands:
 ```sh
-git clone https://gitlab.com/underluns/terminalis.git ~/.bash/terminalis
+git clone https://gitlab.com/underluns/terminalis.git ~/.sh/terminalis
 ```
 
-And then add the following lines to your shell configuration file `~/.bashrc`:
+And then add the following lines to your shell configuration file `~/.bashrc` or `~/.zshrc`:
 ```sh
-source ~/.bash/terminalis/install.sh
+source ~/.sh/terminalis/install.sh
 ```
 Now you have all the features of the terminalis
 

@@ -1,5 +1,3 @@
 #!/usr/bin/env sh
 
-TERMINALIS_ROOT=$(realpath $(dirname ${BASH_SOURCE[0]}))
-
-source ${TERMINALIS_ROOT}/lib/terminalis.sh init
+. "${TERMINALIS_ROOT:="$(realpath "$(dirname "$0")")"}/lib/terminalis.sh" && terminalis init
