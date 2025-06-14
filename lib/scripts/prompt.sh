@@ -8,10 +8,10 @@ if __terminalis_shell_is_zsh; then
   TERMINALIS_PROMPT_STATUS_SUCCESS="%{%F{white}%}%#%{%f%} "
   TERMINALIS_PROMPT_STATUS_FAILURE="%{%F{red}%}%#%{%f%} "
 elif __terminalis_shell_is_bash; then
-  TERMINALIS_PROMPT_PWD_SUFFIX="\[\033[0;34m\]"
-  TERMINALIS_PROMPT_PWD_PREFIX="\[\033[0m\] "
-  TERMINALIS_PROMPT_GIT_SUFFIX="\[\033[0;33m\]"
-  TERMINALIS_PROMPT_GIT_PREFIX="\[\033[0m\] "
+  TERMINALIS_PROMPT_PWD_PREFIX="\[\033[0;34m\]"
+  TERMINALIS_PROMPT_PWD_SUFFIX="\[\033[0m\] "
+  TERMINALIS_PROMPT_GIT_PREFIX="\[\033[0;33m\]"
+  TERMINALIS_PROMPT_GIT_SUFFIX="\[\033[0m\] "
   TERMINALIS_PROMPT_STATUS_SUCCESS="\[\033[0;37m\]\$\[\033[0m\] "
   TERMINALIS_PROMPT_STATUS_FAILURE="\[\033[0;31m\]\$\[\033[0m\] "
 else
@@ -22,9 +22,9 @@ else
   TERMINALIS_PROMPT_STATUS_SUCCESS="\$ "
   TERMINALIS_PROMPT_STATUS_FAILURE="\$! "
 fi
-TERMINALIS_PROMPT_GIT_MODIFIED_SYMBOL="*"
-TERMINALIS_PROMPT_GIT_PUSH_SYMBOL=" ↑"
-TERMINALIS_PROMPT_GIT_PULL_SYMBOL=" ↓"
+TERMINALIS_PROMPT_GIT_MARK_CHANGES="*"
+TERMINALIS_PROMPT_GIT_MARK_AHEAD=" ↑"
+TERMINALIS_PROMPT_GIT_MARK_BEHIND=" ↓"
 
 __terminalis_prompt_pwd() {
   echo "${TERMINALIS_PROMPT_PWD_PREFIX}$(__terminalis_pwd)${TERMINALIS_PROMPT_PWD_SUFFIX}"
@@ -40,15 +40,15 @@ __terminalis_prompt_git(){
     _terminalis_prompt_git_behind="$(__terminalis_git_count_commits_behind "${_terminalis_prompt_git_ref}")"
 
     if __terminalis_git_has_changes; then
-      _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_MODIFIED_SYMBOL}"
+      _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_MARK_CHANGES}"
     fi
 
     if [ "${_terminalis_prompt_git_ahead}" -ne 0 ]; then
-      _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_PUSH_SYMBOL}${_terminalis_prompt_git_ahead}"
+      _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_MARK_AHEAD}${_terminalis_prompt_git_ahead}"
     fi
 
     if [ "${_terminalis_prompt_git_behind}" -ne 0 ]; then
-      _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_PULL_SYMBOL}${_terminalis_prompt_git_behind}"
+      _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_MARK_BEHIND}${_terminalis_prompt_git_behind}"
     fi
 
     echo "${TERMINALIS_PROMPT_GIT_PREFIX}${_terminalis_prompt_git_ref}${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_SUFFIX}"
