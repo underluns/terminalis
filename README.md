@@ -39,7 +39,7 @@ git clone https://gitlab.com/underluns/terminalis.git ~/.sh/terminalis
 
 And then add the following lines to your shell configuration file `~/.bashrc` or `~/.zshrc`:
 ```sh
-source ~/.sh/terminalis/install.sh
+. ${TERMINALIS_ROOT:=~/.sh/terminalis}/install.sh
 ```
 Now you have all the features of the terminalis
 

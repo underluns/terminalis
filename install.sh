@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-. "${TERMINALIS_ROOT:="$(realpath "$(dirname "$0")")"}/lib/terminalis.sh" && terminalis init
+. "${TERMINALIS_ROOT:?}/lib/terminalis.sh" && terminalis init

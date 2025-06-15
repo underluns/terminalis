@@ -11,7 +11,7 @@ terminalis_help() {
     "help" | "--help" | "-h")
       cat "$(__terminalis_root)/help/commands/help.txt";;
     *)
-      echo "$0:$LINENO: command not found: $1" 1>&2
+      echo "terminalis_help: command not found: $1" 1>&2
       return 1;;
   esac
 }

@@ -17,7 +17,7 @@ terminalis() {
     "--help" | "-h" | "")
       terminalis_help;;
     *)
-      echo "$0:$LINENO: command not found: $1" 1>&2
+      echo "terminalis: command not found: $1" 1>&2
       return 1;;
   esac
 }
