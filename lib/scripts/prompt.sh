@@ -31,27 +31,27 @@ __terminalis_prompt_pwd() {
 }
 
 __terminalis_prompt_git(){
-    if ! __terminalis_git_is_repo; then
-      return
-    fi
+  if ! __terminalis_git_is_repo; then
+   return
+  fi
 
-    _terminalis_prompt_git_ref="$(__terminalis_git_branch || __terminalis_git_tag || __terminalis_git_revision)"
-    _terminalis_prompt_git_ahead="$(__terminalis_git_count_commits_ahead "${_terminalis_prompt_git_ref}")"
-    _terminalis_prompt_git_behind="$(__terminalis_git_count_commits_behind "${_terminalis_prompt_git_ref}")"
+  _terminalis_prompt_git_ref="$(__terminalis_git_branch || __terminalis_git_tag || __terminalis_git_revision)"
+  _terminalis_prompt_git_ahead="$(__terminalis_git_count_commits_ahead "${_terminalis_prompt_git_ref}")"
+  _terminalis_prompt_git_behind="$(__terminalis_git_count_commits_behind "${_terminalis_prompt_git_ref}")"
 
-    if __terminalis_git_has_changes; then
-      _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_MARK_CHANGES}"
-    fi
+  if __terminalis_git_has_changes; then
+    _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_MARK_CHANGES}"
+  fi
 
-    if [ "${_terminalis_prompt_git_ahead}" -ne 0 ]; then
-      _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_MARK_AHEAD}${_terminalis_prompt_git_ahead}"
-    fi
+  if [ "${_terminalis_prompt_git_ahead}" -ne 0 ]; then
+    _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_MARK_AHEAD}${_terminalis_prompt_git_ahead}"
+  fi
 
-    if [ "${_terminalis_prompt_git_behind}" -ne 0 ]; then
-      _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_MARK_BEHIND}${_terminalis_prompt_git_behind}"
-    fi
+  if [ "${_terminalis_prompt_git_behind}" -ne 0 ]; then
+    _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_MARK_BEHIND}${_terminalis_prompt_git_behind}"
+  fi
 
-    echo "${TERMINALIS_PROMPT_GIT_PREFIX}${_terminalis_prompt_git_ref}${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_SUFFIX}"
+  echo "${TERMINALIS_PROMPT_GIT_PREFIX}${_terminalis_prompt_git_ref}${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_SUFFIX}"
 }
 
 __terminalis_prompt_status() {
