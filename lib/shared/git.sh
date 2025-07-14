@@ -8,30 +8,30 @@ __terminalis_git_has_changes() {
   test -n "$(git status --porcelain 2> /dev/null)"
 }
 
-__terminalis_git_branch() {
+__terminalis_git_ref() {
+  __terminalis_git_ref_branch || __terminalis_git_ref_tag || __terminalis_git_ref_commit
+}
+
+__terminalis_git_ref_branch() {
   git symbolic-ref --short HEAD 2> /dev/null
 }
 
-__terminalis_git_tag() {
+__terminalis_git_ref_tag() {
   git describe --tags 2> /dev/null
 }
 
-__terminalis_git_revision() {
+__terminalis_git_ref_commit() {
   git rev-parse --short HEAD 2> /dev/null
-}
-
-__terminalis_git_ref() {
-  __terminalis_git_branch || __terminalis_git_tag || __terminalis_git_revision
 }
 
 __terminalis_git_count_diff() {
   git rev-list --count "$1".."$2" 2> /dev/null
 }
 
-__terminalis_git_count_ahead() {
+__terminalis_git_count_diff_ahead() {
   __terminalis_git_count_diff "origin/$1" "$1"
 }
 
-__terminalis_git_count_behind() {
+__terminalis_git_count_diff_behind() {
   __terminalis_git_count_diff "$1" "origin/$1"
 }
