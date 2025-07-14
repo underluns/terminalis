@@ -64,11 +64,11 @@ __terminalis_prompt() {
   set -- "${1:-"$?"}"
 
   TERMINALIS_PROMPT="$(__terminalis_prompt_pwd)$(__terminalis_prompt_git)$(__terminalis_prompt_status "$1")" && echo "${TERMINALIS_PROMPT}"
-  PS1="${TERMINALIS_PROMPT}"
 }
 
 precmd() {
-  __terminalis_prompt "$?" > /dev/null
+  PS1="$(__terminalis_prompt "$?")"
+
   __terminalis_pwd > /dev/null
 }
 PROMPT_COMMAND=precmd
