@@ -1,30 +1,48 @@
 #!/usr/bin/env sh
 
 if __terminalis_shell_is_zsh; then
-  TERMINALIS_PROMPT_PWD_PREFIX="%{%F{blue}%}"
-  TERMINALIS_PROMPT_PWD_SUFFIX="%{%f%} "
-  TERMINALIS_PROMPT_GIT_PREFIX="%{%F{yellow}%}"
-  TERMINALIS_PROMPT_GIT_SUFFIX="%{%f%} "
-  TERMINALIS_PROMPT_STATUS_SUCCESS="%{%F{white}%}%#%{%f%} "
-  TERMINALIS_PROMPT_STATUS_FAILURE="%{%F{red}%}%#%{%f%} "
+  TERMINALIS_PROMPT_PWD_PREFIX='%{%F{blue}%}'
+  TERMINALIS_PROMPT_PWD_SUFFIX=' %{%f%}'
+  TERMINALIS_PROMPT_GIT_PREFIX='%{%F{yellow}%}'
+  TERMINALIS_PROMPT_GIT_SUFFIX=' %{%f%}'
+  TERMINALIS_PROMPT_STATUS_SUCCESS_PREFIX='%{%F{white}%}'
+  TERMINALIS_PROMPT_STATUS_SUCCESS_SUFFIX=' %{%f%}'
+  TERMINALIS_PROMPT_STATUS_FAILURE_PREFIX='%{%F{red}%}'
+  TERMINALIS_PROMPT_STATUS_FAILURE_SUFFIX=' %{%f%}'
+  TERMINALIS_PROMPT_STATUS_SUCCESS_SYMBOL='%#'
+  TERMINALIS_PROMPT_STATUS_FAILURE_SYMBOL='%#'
 elif __terminalis_shell_is_bash; then
-  TERMINALIS_PROMPT_PWD_PREFIX="\[\033[0;34m\]"
-  TERMINALIS_PROMPT_PWD_SUFFIX="\[\033[0m\] "
-  TERMINALIS_PROMPT_GIT_PREFIX="\[\033[0;33m\]"
-  TERMINALIS_PROMPT_GIT_SUFFIX="\[\033[0m\] "
-  TERMINALIS_PROMPT_STATUS_SUCCESS="\[\033[0;37m\]\$\[\033[0m\] "
-  TERMINALIS_PROMPT_STATUS_FAILURE="\[\033[0;31m\]\$\[\033[0m\] "
+  TERMINALIS_PROMPT_PWD_PREFIX='\[\033[0;34m\]'
+  TERMINALIS_PROMPT_PWD_SUFFIX=' \[\033[0m\]'
+  TERMINALIS_PROMPT_GIT_PREFIX='\[\033[0;33m\]'
+  TERMINALIS_PROMPT_GIT_SUFFIX=' \[\033[0m\]'
+  TERMINALIS_PROMPT_STATUS_SUCCESS_PREFIX='\[\033[0;37m\]'
+  TERMINALIS_PROMPT_STATUS_SUCCESS_SUFFIX=' \[\033[0m\]'
+  TERMINALIS_PROMPT_STATUS_FAILURE_PREFIX='\[\033[0;31m\]'
+  TERMINALIS_PROMPT_STATUS_FAILURE_SUFFIX=' \[\033[0m\]'
+  TERMINALIS_PROMPT_STATUS_SUCCESS_SYMBOL='\$'
+  TERMINALIS_PROMPT_STATUS_FAILURE_SYMBOL='\$'
 else
-  TERMINALIS_PROMPT_PWD_PREFIX=""
-  TERMINALIS_PROMPT_PWD_SUFFIX=" "
-  TERMINALIS_PROMPT_GIT_PREFIX=""
-  TERMINALIS_PROMPT_GIT_SUFFIX=" "
-  TERMINALIS_PROMPT_STATUS_SUCCESS="\$ "
-  TERMINALIS_PROMPT_STATUS_FAILURE="\$! "
+  TERMINALIS_PROMPT_PWD_PREFIX=''
+  TERMINALIS_PROMPT_PWD_SUFFIX=' '
+  TERMINALIS_PROMPT_GIT_PREFIX=''
+  TERMINALIS_PROMPT_GIT_SUFFIX=' '
+  TERMINALIS_PROMPT_STATUS_SUCCESS_PREFIX=''
+  TERMINALIS_PROMPT_STATUS_SUCCESS_SUFFIX=' '
+  TERMINALIS_PROMPT_STATUS_FAILURE_PREFIX=''
+  TERMINALIS_PROMPT_STATUS_FAILURE_SUFFIX=' '
+  TERMINALIS_PROMPT_STATUS_SUCCESS_SYMBOL='$'
+  TERMINALIS_PROMPT_STATUS_FAILURE_SYMBOL='!'
 fi
-TERMINALIS_PROMPT_GIT_MARK_CHANGES="*"
-TERMINALIS_PROMPT_GIT_MARK_AHEAD=" ↑"
-TERMINALIS_PROMPT_GIT_MARK_BEHIND=" ↓"
+TERMINALIS_PROMPT_GIT_CHANGED_PREFIX=''
+TERMINALIS_PROMPT_GIT_CHANGED_SUFFIX=''
+TERMINALIS_PROMPT_GIT_AHEAD_PREFIX=' '
+TERMINALIS_PROMPT_GIT_AHEAD_SUFFIX=''
+TERMINALIS_PROMPT_GIT_BEHIND_PREFIX=' '
+TERMINALIS_PROMPT_GIT_BEHIND_SUFFIX=''
+TERMINALIS_PROMPT_GIT_CHANGED_SYMBOL='*'
+TERMINALIS_PROMPT_GIT_AHEAD_SYMBOL='↑'
+TERMINALIS_PROMPT_GIT_BEHIND_SYMBOL='↓'
 
 __terminalis_prompt_pwd() {
   echo "${TERMINALIS_PROMPT_PWD_PREFIX}$(__terminalis_pwd)${TERMINALIS_PROMPT_PWD_SUFFIX}"
@@ -34,7 +52,7 @@ __terminalis_prompt_git(){
   if __terminalis_git_is_repo; then
     _terminalis_prompt_git_ref="$(__terminalis_git_ref)"
 
-    _terminalis_prompt_git_marks="$(__terminalis_prompt_git_changes)"
+    _terminalis_prompt_git_marks="$(__terminalis_prompt_git_changed)"
     _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}$(__terminalis_prompt_git_ahead "${_terminalis_prompt_git_ref}")"
     _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}$(__terminalis_prompt_git_behind "${_terminalis_prompt_git_ref}")"
 
@@ -42,9 +60,9 @@ __terminalis_prompt_git(){
   fi
 }
 
-__terminalis_prompt_git_changes() {
-  if __terminalis_git_has_changes; then
-    echo "${TERMINALIS_PROMPT_GIT_MARK_CHANGES}"
+__terminalis_prompt_git_changed() {
+  if __terminalis_git_is_changed; then
+    echo "${TERMINALIS_PROMPT_GIT_CHANGED_PREFIX}${TERMINALIS_PROMPT_GIT_CHANGED_SYMBOL}${TERMINALIS_PROMPT_GIT_CHANGED_SUFFIX}"
   fi
 }
 
@@ -53,7 +71,7 @@ __terminalis_prompt_git_ahead() {
   _terminalis_prompt_git_ahead="$(__terminalis_git_count_diff_ahead "${_terminalis_prompt_git_ref}")"
 
   if [ "${_terminalis_prompt_git_ahead}" -ne 0 ]; then
-    echo "${TERMINALIS_PROMPT_GIT_MARK_AHEAD}${_terminalis_prompt_git_ahead}"
+    echo "${TERMINALIS_PROMPT_GIT_AHEAD_PREFIX}${TERMINALIS_PROMPT_GIT_AHEAD_SYMBOL}${_terminalis_prompt_git_ahead}${TERMINALIS_PROMPT_GIT_AHEAD_SUFFIX}"
   fi
 }
 
@@ -62,15 +80,15 @@ __terminalis_prompt_git_behind() {
   _terminalis_prompt_git_behind="$(__terminalis_git_count_diff_behind "${_terminalis_prompt_git_ref}")"
 
   if [ "${_terminalis_prompt_git_behind}" -ne 0 ]; then
-    echo "${TERMINALIS_PROMPT_GIT_MARK_BEHIND}${_terminalis_prompt_git_behind}"
+    echo "${TERMINALIS_PROMPT_GIT_BEHIND_PREFIX}${TERMINALIS_PROMPT_GIT_BEHIND_SYMBOL}${_terminalis_prompt_git_behind}${TERMINALIS_PROMPT_GIT_BEHIND_SUFFIX}"
   fi
 }
 
 __terminalis_prompt_status() {
   if [ "${1:-"$?"}" -eq 0 ]; then
-    echo "${TERMINALIS_PROMPT_STATUS_SUCCESS}"
+    echo "${TERMINALIS_PROMPT_STATUS_SUCCESS_PREFIX}${TERMINALIS_PROMPT_STATUS_SUCCESS_SYMBOL}${TERMINALIS_PROMPT_STATUS_SUCCESS_SUFFIX}"
   else
-    echo "${TERMINALIS_PROMPT_STATUS_FAILURE}"
+    echo "${TERMINALIS_PROMPT_STATUS_FAILURE_PREFIX}${TERMINALIS_PROMPT_STATUS_FAILURE_SYMBOL}${TERMINALIS_PROMPT_STATUS_FAILURE_SUFFIX}"
   fi
 }
 

@@ -10,11 +10,11 @@ __terminalis_root() {
 
 terminalis() {
   case "$1" in
-    "init")
+    'init')
       shift && terminalis_init "$@";;
-    "help")
+    'help')
       shift && terminalis_help "$@";;
-    "--help" | "-h" | "")
+    '--help' | '-h' | '')
       terminalis_help;;
     *)
       echo "terminalis: command not found: $1" 1>&2 && return 1;;
