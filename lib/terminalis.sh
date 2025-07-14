@@ -17,7 +17,6 @@ terminalis() {
     "--help" | "-h" | "")
       terminalis_help;;
     *)
-      echo "terminalis: command not found: $1" 1>&2
-      return 1;;
+      echo "terminalis: command not found: $1" 1>&2 && return 1;;
   esac
 }
