@@ -51,10 +51,7 @@ __terminalis_prompt_pwd() {
 __terminalis_prompt_git(){
   if __terminalis_git_is_repo; then
     _terminalis_prompt_git_ref="$(__terminalis_git_ref)"
-
-    _terminalis_prompt_git_marks="$(__terminalis_prompt_git_changed)"
-    _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}$(__terminalis_prompt_git_ahead "${_terminalis_prompt_git_ref}")"
-    _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}$(__terminalis_prompt_git_behind "${_terminalis_prompt_git_ref}")"
+    _terminalis_prompt_git_marks="$(__terminalis_prompt_git_changed)$(__terminalis_prompt_git_ahead "${_terminalis_prompt_git_ref}")$(__terminalis_prompt_git_behind "${_terminalis_prompt_git_ref}")"
 
     echo "${TERMINALIS_PROMPT_GIT_PREFIX}${_terminalis_prompt_git_ref}${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_SUFFIX}"
   fi
