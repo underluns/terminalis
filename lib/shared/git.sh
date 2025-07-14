@@ -29,9 +29,13 @@ __terminalis_git_count_diff() {
 }
 
 __terminalis_git_count_diff_ahead() {
+  set -- "${1:-"$(__terminalis_git_ref)"}"
+
   __terminalis_git_count_diff "origin/$1" "$1"
 }
 
 __terminalis_git_count_diff_behind() {
+  set -- "${1:-"$(__terminalis_git_ref)"}"
+
   __terminalis_git_count_diff "$1" "origin/$1"
 }
