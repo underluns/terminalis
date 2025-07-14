@@ -31,25 +31,39 @@ __terminalis_prompt_pwd() {
 }
 
 __terminalis_prompt_git(){
-  if ! __terminalis_git_is_repo; then
-   return
+  if __terminalis_git_is_repo; then
+    _terminalis_prompt_git_ref="$(__terminalis_git_ref)"
+
+    _terminalis_prompt_git_marks="$(__terminalis_prompt_git_changes)"
+    _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}$(__terminalis_prompt_git_ahead "${_terminalis_prompt_git_ref}")"
+    _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}$(__terminalis_prompt_git_behind "${_terminalis_prompt_git_ref}")"
+
+    echo "${TERMINALIS_PROMPT_GIT_PREFIX}${_terminalis_prompt_git_ref}${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_SUFFIX}"
   fi
+}
 
-  _terminalis_prompt_git_ref="$(__terminalis_git_ref)"
-  _terminalis_prompt_git_count_diff_ahead="$(__terminalis_git_count_diff_ahead "${_terminalis_prompt_git_ref}")"
-  _terminalis_prompt_git_count_diff_behind="$(__terminalis_git_count_diff_behind "${_terminalis_prompt_git_ref}")"
-
+__terminalis_prompt_git_changes() {
   if __terminalis_git_has_changes; then
-    _terminalis_prompt_git_marks="${TERMINALIS_PROMPT_GIT_MARK_CHANGES}"
+    echo "${TERMINALIS_PROMPT_GIT_MARK_CHANGES}"
   fi
-  if [ "${_terminalis_prompt_git_count_diff_ahead}" -ne 0 ]; then
-    _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_MARK_AHEAD}${_terminalis_prompt_git_count_diff_ahead}"
-  fi
-  if [ "${_terminalis_prompt_git_count_diff_behind}" -ne 0 ]; then
-    _terminalis_prompt_git_marks="${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_MARK_BEHIND}${_terminalis_prompt_git_count_diff_behind}"
-  fi
+}
 
-  echo "${TERMINALIS_PROMPT_GIT_PREFIX}${_terminalis_prompt_git_ref}${_terminalis_prompt_git_marks}${TERMINALIS_PROMPT_GIT_SUFFIX}"
+__terminalis_prompt_git_ahead() {
+  _terminalis_prompt_git_ref="${1:-"$(__terminalis_git_ref)"}"
+  _terminalis_prompt_git_ahead="$(__terminalis_git_count_diff_ahead "${_terminalis_prompt_git_ref}")"
+
+  if [ "${_terminalis_prompt_git_ahead}" -ne 0 ]; then
+    echo "${TERMINALIS_PROMPT_GIT_MARK_AHEAD}${_terminalis_prompt_git_ahead}"
+  fi
+}
+
+__terminalis_prompt_git_behind() {
+  _terminalis_prompt_git_ref="${1:-"$(__terminalis_git_ref)"}"
+  _terminalis_prompt_git_behind="$(__terminalis_git_count_diff_behind "${_terminalis_prompt_git_ref}")"
+
+  if [ "${_terminalis_prompt_git_behind}" -ne 0 ]; then
+    echo "${TERMINALIS_PROMPT_GIT_MARK_BEHIND}${_terminalis_prompt_git_behind}"
+  fi
 }
 
 __terminalis_prompt_status() {
