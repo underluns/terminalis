@@ -2,7 +2,7 @@
 [![pipeline](https://gitlab.com/underluns/terminalis/badges/master/pipeline.svg)](https://gitlab.com/underluns/terminalis/-/pipelines)
 [![coverage](https://gitlab.com/underluns/terminalis/badges/master/coverage.svg)](https://gitlab.com/underluns/terminalis/-/commits)
 
-# terminalis
+# Terminalis
 
 This is a shell script [terminalis.sh](./lib/terminalis.sh)
 
@@ -14,6 +14,7 @@ It extends the system console and adds several useful [features](#features) for 
 * [Installation](#installation)
 * [Features](#features)
 * [Usage](#usage)
+* [Development](#development)
 * [Testing](#testing)
 * [Changelog](#changelog)
 * [License](#license)
@@ -39,7 +40,7 @@ git clone https://gitlab.com/underluns/terminalis.git ~/.sh/terminalis
 
 And then add the following lines to your shell configuration file `~/.bashrc` or `~/.zshrc`:
 ```sh
-. ${TERMINALIS_ROOT:=~/.sh/terminalis}/install.sh
+. "${TERMINALIS_ROOT:=${HOME}/.sh/terminalis}/install.sh"
 ```
 Now you have all the features of the terminalis
 
@@ -50,6 +51,10 @@ The features for this project will be described in this section
 ## Usage
 
 The use cases for this project will be described in this section
+
+## Development
+
+The development rules for this project will be described in this section
 
 ## Testing
 
