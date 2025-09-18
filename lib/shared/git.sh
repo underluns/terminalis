@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
 __terminalis_git_is_repo() {
-  test -n "$(git rev-parse --is-inside-work-tree 2> /dev/null)"
+  [ -n "$(git rev-parse --is-inside-work-tree 2> /dev/null)" ]
 }
 
 __terminalis_git_is_changed() {
-  test -n "$(git status --porcelain 2> /dev/null)"
+  [ -n "$(git status --porcelain 2> /dev/null)" ]
 }
 
 __terminalis_git_ref() {
