@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+. "$(__terminalis_root)/lib/shared/errors.sh"
 . "$(__terminalis_root)/lib/shared/git.sh"
 . "$(__terminalis_root)/lib/shared/shell.sh"
 

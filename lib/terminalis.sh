@@ -20,7 +20,7 @@ terminalis() {
       terminalis_help
       ;;
     *)
-      echo "terminalis: command not found: $1" 1>&2 && return 1
+      __terminalis_error "command not found: $1"
       ;;
   esac
 }
