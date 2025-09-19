@@ -5,10 +5,14 @@ terminalis_help() {
     '')
       cat "$(__terminalis_root)/help/terminalis.txt"
       terminalis_help init
+      terminalis_help update
       terminalis_help help
       ;;
     'init')
       cat "$(__terminalis_root)/help/commands/init.txt"
+      ;;
+    'update')
+      cat "$(__terminalis_root)/help/commands/update.txt"
       ;;
     'help' | '--help' | '-h')
       cat "$(__terminalis_root)/help/commands/help.txt"
