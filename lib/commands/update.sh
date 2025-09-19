@@ -8,7 +8,7 @@ terminalis_update() {
       terminalis_help update
       ;;
     *)
-      __terminalis_error "command not found: $1"
+      __terminalis_error_command_not_found "$1"
       ;;
   esac
 }

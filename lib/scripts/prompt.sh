@@ -44,6 +44,12 @@ TERMINALIS_PROMPT_GIT_CHANGED_SYMBOL='*'
 TERMINALIS_PROMPT_GIT_AHEAD_SYMBOL='↑'
 TERMINALIS_PROMPT_GIT_BEHIND_SYMBOL='↓'
 
+__terminalis_prompt() {
+  set -- "${1:-"$?"}"
+
+  TERMINALIS_PROMPT="$(__terminalis_prompt_pwd)$(__terminalis_prompt_git)$(__terminalis_prompt_status "$1")" && echo "${TERMINALIS_PROMPT}"
+}
+
 __terminalis_prompt_pwd() {
   echo "${TERMINALIS_PROMPT_PWD_PREFIX}$(__terminalis_pwd)${TERMINALIS_PROMPT_PWD_SUFFIX}"
 }
@@ -87,12 +93,6 @@ __terminalis_prompt_status() {
   else
     echo "${TERMINALIS_PROMPT_STATUS_FAILURE_PREFIX}${TERMINALIS_PROMPT_STATUS_FAILURE_SYMBOL}${TERMINALIS_PROMPT_STATUS_FAILURE_SUFFIX}"
   fi
-}
-
-__terminalis_prompt() {
-  set -- "${1:-"$?"}"
-
-  TERMINALIS_PROMPT="$(__terminalis_prompt_pwd)$(__terminalis_prompt_git)$(__terminalis_prompt_status "$1")" && echo "${TERMINALIS_PROMPT}"
 }
 
 precmd() {

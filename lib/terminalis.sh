@@ -24,7 +24,7 @@ terminalis() {
       terminalis_help
       ;;
     *)
-      __terminalis_error "command not found: $1"
+      __terminalis_error_command_not_found "$1"
       ;;
   esac
 }

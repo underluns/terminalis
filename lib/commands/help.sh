@@ -18,7 +18,7 @@ terminalis_help() {
       cat "$(__terminalis_root)/help/commands/help.txt"
       ;;
     *)
-      __terminalis_error "command not found: $1"
+      __terminalis_error_command_not_found "$1"
       ;;
   esac
 }
