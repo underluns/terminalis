@@ -3,6 +3,10 @@
 terminalis_update() {
   case "$1" in
     '')
+      (__terminalis_cd && __terminalis_git_pull)
+      ;;
+    'all' | '--all' | '-a')
+      terminalis_update
       ;;
     '--help' | '-h')
       terminalis_help update

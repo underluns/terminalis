@@ -8,6 +8,10 @@ __terminalis_git_is_changed() {
   [ -n "$(git status --porcelain 2> /dev/null)" ]
 }
 
+__terminalis_git_pull() {
+  git pull --all --prune
+}
+
 __terminalis_git_ref() {
   __terminalis_git_ref_branch || __terminalis_git_ref_tag || __terminalis_git_ref_commit
 }
