@@ -2,20 +2,20 @@
 
 terminalis_help() {
   case "$1" in
-    '')
-      __terminalis_cat "help/terminalis.txt"
+    'terminalis' | '--terminalis' | '')
+      cat "$(__terminalis_root)/help/terminalis.txt"
       ;;
     'init')
-      __terminalis_cat "help/commands/init.txt"
+      cat "$(__terminalis_root)/help/commands/init.txt"
       ;;
     'update')
-      __terminalis_cat "help/commands/update.txt"
+      cat "$(__terminalis_root)/help/commands/update.txt"
       ;;
     'help' | '--help' | '-h')
-      __terminalis_cat "help/commands/help.txt"
+      cat "$(__terminalis_root)/help/commands/help.txt"
       ;;
     'all' | '--all' | '-a')
-      terminalis_help
+      terminalis_help terminalis
       terminalis_help init
       terminalis_help update
       terminalis_help help

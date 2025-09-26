@@ -2,11 +2,11 @@
 
 terminalis_update() {
   case "$1" in
-    '')
-      (__terminalis_cd && __terminalis_git_pull)
+    'terminalis' | '--terminalis' | '')
+      (cd "$(__terminalis_root)" && __terminalis_git_pull)
       ;;
     'all' | '--all' | '-a')
-      terminalis_update
+      terminalis_update terminalis
       ;;
     '--help' | '-h')
       terminalis_help update

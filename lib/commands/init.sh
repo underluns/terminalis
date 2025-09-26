@@ -3,7 +3,7 @@
 terminalis_init() {
   case "$1" in
     '')
-      __terminalis_source "lib/scripts/prompt.sh"
+      . "$(__terminalis_root)/lib/scripts/prompt.sh"
       ;;
     '--help' | '-h')
       terminalis_help init

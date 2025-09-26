@@ -4,14 +4,10 @@ __terminalis_root() {
   echo "${TERMINALIS_ROOT:?}"
 }
 
-__terminalis_source() {
-  . "$(__terminalis_root)/$1"
-}
-
-__terminalis_source "lib/shared/common.sh"
-__terminalis_source "lib/commands/help.sh"
-__terminalis_source "lib/commands/init.sh"
-__terminalis_source "lib/commands/update.sh"
+. "$(__terminalis_root)/lib/shared/common.sh"
+. "$(__terminalis_root)/lib/commands/help.sh"
+. "$(__terminalis_root)/lib/commands/init.sh"
+. "$(__terminalis_root)/lib/commands/update.sh"
 
 terminalis() {
   case "$1" in
