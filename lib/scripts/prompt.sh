@@ -54,7 +54,7 @@ __terminalis_prompt_pwd() {
   echo "${TERMINALIS_PROMPT_PWD_PREFIX}$(__terminalis_pwd)${TERMINALIS_PROMPT_PWD_SUFFIX}"
 }
 
-__terminalis_prompt_git(){
+__terminalis_prompt_git() {
   if __terminalis_git_is_repo; then
     _terminalis_prompt_git_ref="$(__terminalis_git_ref)"
     _terminalis_prompt_git_marks="$(__terminalis_prompt_git_changed)$(__terminalis_prompt_git_ahead "${_terminalis_prompt_git_ref}")$(__terminalis_prompt_git_behind "${_terminalis_prompt_git_ref}")"
@@ -98,6 +98,6 @@ __terminalis_prompt_status() {
 precmd() {
   PS1="$(__terminalis_prompt "$?")"
 
-  __terminalis_pwd > /dev/null
+  __terminalis_pwd 1>/dev/null
 }
 PROMPT_COMMAND=precmd

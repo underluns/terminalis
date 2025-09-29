@@ -16,3 +16,6 @@ check: lint
 
 .PHONY: lint
 lint: shell_lint
+
+.PHONY: format
+format: shell_format
