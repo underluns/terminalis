@@ -1,4 +1,11 @@
-tests:
+shell_format:
   stage: test
+  image: mvdan/shfmt:latest-alpine
   script:
-    - env
+    - shfmt --version && shfmt --diff .
+
+shell_lint:
+  stage: test
+  image: koalaman/shellcheck-alpine:latest
+  script:
+    - shellcheck --version && shellcheck $(find . -type f -name '*.sh')
