@@ -10,9 +10,24 @@ on:
     - cron:  "0 10 1 * *"
 
 jobs:
-  tests:
+  shell_format:
     runs-on: ubuntu-cloud-runner
     steps:
       - uses: actions/checkout@v4
-      - run: |
-          env
+      - name: shfmt
+        uses: docker://mvdan/shfmt:latest-alpine
+        with:
+          entrypoint: /bin/sh
+          args: | 
+            -c "shfmt --version && shfmt --diff ."
+
+  shell_lint:
+    runs-on: ubuntu-cloud-runner
+    steps:
+      - uses: actions/checkout@v4
+      - name: shellcheck
+        uses: docker://koalaman/shellcheck-alpine:latest
+        with:
+          entrypoint: /bin/sh
+          args: |
+            -c "shellcheck --version && shellcheck $(find . -type f -name '*.sh')"
