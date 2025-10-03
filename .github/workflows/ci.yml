@@ -10,9 +10,20 @@ on:
     - cron:  "0 10 1 * *"
 
 jobs:
-  tests:
+  shell_format:
     runs-on: ubuntu-latest
+    container: mvdan/shfmt:latest-alpine
     steps:
-      - uses: actions/checkout@v4
-      - run: |
-          env
+      - uses: actions/checkout@v5
+      - name: shfmt
+        run: |
+          shfmt --version && shfmt --diff .
+
+  shell_lint:
+    runs-on: ubuntu-latest
+    container: koalaman/shellcheck-alpine:latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: shellcheck
+        run: |
+          shellcheck --version && shellcheck $(find . -type f -name '*.sh')
