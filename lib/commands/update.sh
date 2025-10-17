@@ -15,6 +15,9 @@ terminalis_update() {
       if __terminalis_system_brew_is_exists; then
         __terminalis_system_brew_update && __terminalis_system_brew_clean
       fi
+      if __terminalis_system_snap_is_exists; then
+        __terminalis_system_snap_update
+      fi
       ;;
     'all' | '--all' | '-a')
       terminalis_update terminalis
