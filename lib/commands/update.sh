@@ -7,12 +7,13 @@ terminalis_update() {
       ;;
     'system' | '--system')
       if __terminalis_system_software_is_exists; then
-        __terminalis_software_update
+        __terminalis_system_software_update
+      fi
+      if __terminalis_system_apt_is_exists; then
+        __terminalis_system_apt_update && __terminalis_system_apt_clean
       fi
       if __terminalis_system_brew_is_exists; then
-        __terminalis_brew_update
-        __terminalis_brew_upgrade
-        __terminalis_brew_cleanup
+        __terminalis_system_brew_update && __terminalis_system_brew_clean
       fi
       ;;
     'all' | '--all' | '-a')

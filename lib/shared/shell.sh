@@ -9,5 +9,5 @@ __terminalis_shell_is_zsh() {
 }
 
 __terminalis_shell_command_is_exists() {
-  type "${1:?}" 1>/dev/null
+  type "${1:?}" 1>/dev/null 2>&1
 }
