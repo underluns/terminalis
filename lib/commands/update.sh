@@ -19,9 +19,15 @@ terminalis_update() {
         __terminalis_system_snap_update
       fi
       ;;
+    'asdf' | '--asdf')
+      if __terminalis_system_asdf_is_exists; then
+        __terminalis_system_asdf_update
+      fi
+      ;;
     'all' | '--all' | '-a')
       terminalis_update terminalis
       terminalis_update system
+      terminalis_update asdf
       ;;
     '--help' | '-h')
       terminalis_help update

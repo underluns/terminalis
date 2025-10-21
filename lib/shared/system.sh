@@ -16,6 +16,10 @@ __terminalis_system_snap_is_exists() {
   __terminalis_shell_command_is_exists snap
 }
 
+__terminalis_system_asdf_is_exists() {
+  __terminalis_shell_command_is_exists asdf
+}
+
 __terminalis_system_software_update() {
   softwareupdate --install --all --agree-to-license
 }
@@ -44,4 +48,10 @@ __terminalis_system_brew_clean() {
 
 __terminalis_system_snap_update() {
   sudo snap refresh
+}
+
+__terminalis_system_asdf_update() {
+  asdf plugin update --all &&
+    asdf plugin list | xargs -I {} asdf set --home {} latest &&
+    asdf install
 }
